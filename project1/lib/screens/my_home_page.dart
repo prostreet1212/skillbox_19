@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project1/platform_widget.dart';
 import 'package:project1/service.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -41,12 +42,18 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('число с андроид платформы'),
-            Text(_counter.toString())
+            Text(_counter.toString()),
+            PlatformWidget(),
+            StreamBuilder(
+              stream: _service.callEventChannel(),
+                builder: (context,snapshot){
+                return Text('${snapshot.hasData?snapshot.data:'no data'}');
+                })
           ],
         ),
       ) ,
       floatingActionButton: FloatingActionButton(
-        onPressed: getStream,
+        onPressed: getValue,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
