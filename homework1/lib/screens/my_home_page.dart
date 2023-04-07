@@ -13,9 +13,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   late TextEditingController _controller;
-  final _service=PlatformService();
+  final _service = PlatformService();
 
   @override
   void initState() {
@@ -25,43 +24,52 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    const String viewType = 'ANDROID_TEXTVIEW';
-    // Pass parameters to the platform side.
-    final Map<String, dynamic> creationParams = <String, dynamic>{};
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
         ),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextField(
-                controller:_controller ,
-              ),
-              ElevatedButton(
-                child: Text('Отправить строку'),
-                onPressed: () {
-                  var method =MethodChannel('plugins.kurun.views/textview_1');
-                   method.invokeMethod('setText', _controller.text);
-
-
-                },
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: 100,
-                child: AndroidView(
-                  viewType: 'plugins.kurun.views/textview',
-                  //layoutDirection: TextDirection.ltr,
-                  //creationParams: creationParams,
-                  creationParamsCodec: const StandardMessageCodec(),
+          child: Padding(
+            padding: EdgeInsets.all(8),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextField(
+                  controller: _controller,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Введите текст',
+                  ),
+                  onChanged: (text) {
+                    setState(() {});
+                  },
                 ),
-              )
-            ],
+                SizedBox(
+                  height: 10,
+                ),
+                ElevatedButton(
+                  child: Text('Отправить строку'),
+                  onPressed: _controller.text.length > 0
+                      ? () {
+                          _service.callSetText(_controller.text);
+                        }
+                      : null,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: 100,
+                  child: AndroidView(
+                    viewType: 'ANDROID_TEXTVIEW',
+                    creationParamsCodec: const StandardMessageCodec(),
+                  ),
+                )
+              ],
+            ),
           ),
-        )
-        // This trailing comma makes auto-formatting nicer for build methods.
-        );
+        ),
+    );
   }
 }

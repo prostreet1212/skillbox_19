@@ -16,10 +16,3 @@ class AndroidTextViewFactory(private val messenger: BinaryMessenger) :
 }
 
 
-//class AndroidTextViewFactory(private val messenger: BinaryMessenger) :
-//    PlatformViewFactory(StandardMessageCodec.INSTANCE) {
-//
-//    override fun create(context: Context, id: Int, o: Any?): PlatformView {
-//        return AndroidTextView(context, id, messenger)
-//    }
-//}
