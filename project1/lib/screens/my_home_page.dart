@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:project1/platform_widget.dart';
 import 'package:project1/service.dart';
+import 'package:project1/web/web_service.dart';
+
+import '../web/platform_view_web.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -12,18 +15,19 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  final _service=PlatformService();
+  final _service=PlatformServiceImpl();
   var _counter=0;
 
   void getValue() async{
-    _counter=await _service.callMethodChanel();
+    //_counter=await _service.callMethodChanel();
+    _counter=_service.getValue();
     setState(() {
       //_counter++;
     });
   }
 
   void getStream() async{
-    _service.callEventChannel().listen((event) {
+    _service.getStream()/*callEventChannel()*/.listen((event) {
       setState(() {
         _counter=event;
       });
@@ -43,9 +47,12 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             Text('число с андроид платформы'),
             Text(_counter.toString()),
-            PlatformWidget(),
+            Container(
+              color: Colors.green,
+              child: PlatformWidget(hybridComposition: true,),
+            ),
             StreamBuilder(
-              stream: _service.callEventChannel(),
+              stream: _service.getStream()/*callEventChannel()*/,
                 builder: (context,snapshot){
                 return Text('${snapshot.hasData?snapshot.data:'no data'}');
                 })
@@ -53,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ) ,
       floatingActionButton: FloatingActionButton(
-        onPressed: getValue,
+        onPressed: getStream,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),

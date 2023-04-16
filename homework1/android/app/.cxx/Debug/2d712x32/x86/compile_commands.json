@@ -1,0 +1,7 @@
+[
+{
+  "directory": "C:/Users/Admin-405/Documents/GitHub/skillbox_19/homework1/android/app/.cxx/Debug/2d712x32/x86",
+  "command": "D:\\Android\\Sdk\\ndk\\23.1.7779620\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe --target=i686-none-linux-android16 --gcc-toolchain=D:/Android/Sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Android/Sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/windows-x86_64/sysroot -Drandom_EXPORTS -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIC -o CMakeFiles\\random.dir\\C_\\Users\\Admin-405\\Documents\\GitHub\\skillbox_19\\homework1\\src\\simple.c.o -c C:\\Users\\Admin-405\\Documents\\GitHub\\skillbox_19\\homework1\\src\\simple.c",
+  "file": "C:\\Users\\Admin-405\\Documents\\GitHub\\skillbox_19\\homework1\\src\\simple.c"
+}
+]

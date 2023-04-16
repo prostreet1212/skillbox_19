@@ -1,0 +1,2 @@
+ninja: Entering directory `C:\Users\Admin-405\Documents\GitHub\skillbox_19\homework1\android\app\.cxx\Debug\2d712x32\x86_64'
+ninja: no work to do.

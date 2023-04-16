@@ -33,7 +33,7 @@ class MainActivity: FlutterActivity() {
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, methodChannel).setMethodCallHandler {
                 call, result ->
             if (call.method == intentMessageId) {
-                call.argument('text')
+                //call.argument('text')
                 result.success(Random.nextInt(0, 500))
             } else {
                 result.notImplemented()

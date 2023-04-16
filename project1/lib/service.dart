@@ -1,5 +1,5 @@
 import 'package:flutter/services.dart';
-
+/*
 class PlatformService {
 
   static const method =MethodChannel('CALL_METHOD');
@@ -16,4 +16,4 @@ class PlatformService {
 
   Stream<int> callEventChannel()=>stream.receiveBroadcastStream().map((event) => event as int);
 
-}
+}*/
